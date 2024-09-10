@@ -28,6 +28,21 @@ class AuthService {
     return response;
   }
 
+  async forgotPassword(email: string): Promise<AxiosResponse> {
+    const response: AxiosResponse = await this.axiosService.axios.put('/forgot-password', { email });
+    return response;
+  }
+
+  async resetPassword(token: string, password: string, confirmPassword: string): Promise<AxiosResponse> {
+    const response: AxiosResponse = await this.axiosService.axios.put(`/reset-password/${token}`, { password, confirmPassword });
+    return response;
+  }
+
+  async verifyEmail(token: string): Promise<AxiosResponse> {
+    const response: AxiosResponse = await axiosAuthInstance.put('/verify-email', { token });
+    return response;
+  }
+
   async resendEmail(data: { userId: number; email: string }): Promise<AxiosResponse> {
     const response: AxiosResponse = await axiosAuthInstance.post('/resend-email', data);
     return response;
@@ -40,16 +55,6 @@ class AuthService {
 
   async signIn(body: IAuth): Promise<AxiosResponse> {
     const response: AxiosResponse = await this.axiosService.axios.post('/signin', body);
-    return response;
-  }
-
-  async forgotPassword(email: string): Promise<AxiosResponse> {
-    const response: AxiosResponse = await this.axiosService.axios.put('/forgot-password', { email });
-    return response;
-  }
-
-  async resetPassword(token: string, password: string, confirmPassword: string): Promise<AxiosResponse> {
-    const response: AxiosResponse = await this.axiosService.axios.put(`/reset-password/${token}`, { password, confirmPassword });
     return response;
   }
 
