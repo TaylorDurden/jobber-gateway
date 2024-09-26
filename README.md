@@ -35,6 +35,7 @@
 - Create an account on `hub.docker.com` or login if you already have one.
 - Make sure to login on your terminal as well.
 - Steps to build and push your image to docker hub
+  - `docker login -u "<your-username>" -p "<your-password>" docker.io`
   - `docker build -t <your-dockerhub-username>/jobber-review .`
     - for my instance: `docker build -t grav008/jobber-gateway .`
   - `docker tag <your-dockerhub-username>/jobber-review <your-dockerhub-username>/jobber-review:stable`
